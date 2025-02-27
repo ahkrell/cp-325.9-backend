@@ -47,7 +47,7 @@ app.route("/api/mechs/:id")
         let collection = await db.collection("mechs");
         let query = { id: parseInt(req.params.id) };
         let result = await collection.updateMany(query, {
-          $set: { id: req.body.id },
+          $set: req.body,
         });
       
         if (!result) res.send("Not found").status(404);
